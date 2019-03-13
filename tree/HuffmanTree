@@ -1,7 +1,48 @@
 //哈夫曼中没有度为1的节点，一颗有n个数字的哈夫曼树共有2n-1个节点
-// n0(度为0的节点) = n2(度为2的节点) + 1
+//二叉树的性质：n0(度为0的节点) = n2(度为2的节点) + 1
 //使用数组存储
 //左子树为0，右子树为1
 //生成哈夫曼树的时候，删除使用的节点，将新生成的节点放在数组后面
 
+// 找到权值最小，并且没有双亲的节点
 
+typedef struct
+{
+  double weight;
+  int parent;
+  int lchild;
+  int rchild;
+  char vaule;
+}
+
+
+
+int m1 = m2 = 9999; // m1 最小, m2次小
+int x1 = x2 = -1;
+
+for (int j = 0; j < n + i; j++)
+{
+  if (HaffuNode[j].weight < m1 && -1 == HaffuNode[j].parent)
+  {
+    m2 = m1;
+    x2 = x1;
+    m1 = HaffuNode[j].weight;
+    x1 = j
+  }
+  else if(HaffuNode[j].weight < m2 && -1 == HaffuNode[j].parent)
+  {
+    m2 = HaffuNode[j].weight;
+    x2 = j
+  }
+}
+
+HaffuNode[n + i].weight = m1 + m2;
+HaffuNode[n + i].lchild = x1;
+HaffuNode[n + i].rchild = x2;
+
+Haffunode[x1].parent = n + i;
+Haffunode[x2].parent = n + i;
+
+i ++;
+
+// until i < 2n - 1
