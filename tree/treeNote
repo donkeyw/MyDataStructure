@@ -4,3 +4,43 @@
     k <= lgN + 1
 出度为0的节点和出度为2的节点的关系
 N0 = N2 + 1
+
+// LL型，右旋转
+Node* RotateLL(Node* root)
+{
+  Node* top = root->left;
+  root->left = top->right;
+  top->right = root;
+
+  root->height = max(height(root->left), height(root->right));
+  top->height = max(height(top->left), height(root->right));
+}
+
+// RR型，左旋转
+Node* RotateRR(Node* root)
+{
+  Node* top = root->right;
+  root->right = top->left;
+  top->left = root;
+
+  root->height = max(height(root->left), height(root->right));
+  top->height = max(height(top->left), height(root->right));
+}
+
+// LR型，先左旋转，再右旋转
+// 在左孩子插入右节点
+Node* RotateLR(Node* root)
+{
+  root->left = RotateRR(root->left);
+
+  return RotateLL(root);
+}
+
+// RL型，先右旋转，再左旋转
+// 在右孩子插入左节点
+Node* RotateRL(Node* root)
+{
+  root->left = RotateLL(root->left);
+
+  return RotateRR(root);
+}
