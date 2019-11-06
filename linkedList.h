@@ -11,13 +11,7 @@ public:
         next = nullptr;
     }
     ~Node()
-    {
-        if (nullptr != next)
-        {
-            delete next;
-            next = nullptr;
-        }
-    }
+    {}
 public:
     int data;
     Node* next;

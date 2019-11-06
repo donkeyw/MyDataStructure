@@ -1,7 +1,8 @@
 #include "linearList.h"
-
+#include <unordered_map>
 int main()
 {
+    std::unordered_map<int, int > map;
     LinearList list(5);
     list.insert(0, 1);
     list.insert(1, 1);
